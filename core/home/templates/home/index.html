@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+{% block start %}
+<h2>Response return from Django Server</h2>
+        <a href="/">Home</a> |
+        <a href="/about/">About</a> | 
+        <a href="/contact/">Contact</a>
+    {{peoples}}
+
+    <table border="1" width="50%">
+        <thead>
+            <tr>
+            <th scope="col">Sr No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th>Can Vote</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in peoples %}
+            <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>
+                {% if person.age > 20 %}
+                👍
+                {% else %}
+                👎
+                {% endif %}
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
