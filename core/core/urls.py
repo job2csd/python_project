@@ -24,12 +24,16 @@ from django.conf import settings # type: ignore
 from django.conf.urls.static import static # type: ignore
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns # type: ignore
 
-
 urlpatterns = [
     path('', home, name='home'),
     path('receipes/', receipes, name='receipes'),
     path('delete_receipe/<receipe_id>/', delete_receipe, name='delete_receipe'),
     path('update_receipe/<receipe_id>/', update_receipe, name='update_receipe'),
+    path('login/', login_page, name='login_page'),
+    path('register/', register_page, name='register_page'),
+    path('logout/', logout_page, name='logout_page'),
+
+    #sample pages
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
