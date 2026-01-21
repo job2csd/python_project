@@ -1,0 +1,45 @@
+જય શ્રી કૃષ્ણ | શ્રી ગણેશાય નમઃ | જય શ્રી લક્ષ્મીમા | જય શ્રી ક્ષેમકલ્યાણી માતાજી
+===========================================================================
+- Select Project Folder and Install "pip install virtualenv"
+- Start : CMD : virtualenv env
+- Activate : cd env/ ==> cd Scripts ==> activate : 
+- Install :CMD: pip install Django==4.1.7
+- Start New Project : CMD : django-admin startproject core (Folder Name)
+- Create App : cmd : python manage.py startapp home (app name)
+- Run Server : python manage.py runserver
+- Run server on custom port : python manage.py runserver 0.0.0.0:5000
+- Add "Apps" in setttings.py ==> INSTALLED_APPS
+- Models : Create or update model or table (command : makemigrations) Structure in Django
+- Generate Table : CMD : python manage.py makemigrations
+- Add Table in Database : CMD : python manage.py migrate
+- Notes : django check DB stat and Internal stat compare when we user command : makemigrations or migrate
+- Django shell : python manage.py shell [dynamic code or data check like CMD]
+- Advance Concept:
+	- Create Super User : python manage.py createsuperuser (jay@943/admin@123)
+	- show model as module in admin panel register model in admin.py (in vege app)
+		- admin.site.register(Receipe)
+	- For dummy data use faker package add new file seed.py in vege app :run this function in shell
+	- Shell Advance Query : Ex: Student.objects.filter(student_name__startswith="jay")
+		- field__startswith
+		- field__endswith
+		- field__icontains
+		- foreignkey__foreigntable_field == "xx"
+		- foreignkey__foreigntable_field__icontains
+		- foreignkey__foreigntable_field__in = d (matching record only join) : IN
+		- Student.objects.exclude(foreignkey__foreigntable_field = "Civil") : Not IN
+		- Queryset.exists() : check query contain data return True/False
+		- Queryset.values() : result convert into JSON Format : for single record : Queryset.values()[0]
+		- Queryset[0:10] : Fetch for limit data
+		- Student.objects.all().distinct("student_name") : Get unique data
+		- Queryset.values_list("field1","field2") : Get result of selected field in Tuple
+		- Student.objects.get(id=1) : Fetch One data and if data not exists it return error but Student.objects.filter return blank
+
+
+
+Django :
+https://www.youtube.com/watch?v=LeqiwqK6-YQ : best
+https://www.youtube.com/watch?v=sccLfQ4_u10&list=PLbGui_ZYuhigchy8DTw4pX4duTTpvqlh6
+https://www.youtube.com/watch?v=VtZ0M5MqgTY&list=PL19fiuet8c3nQjJ8rPgKAdrTymAsncLXd
+
+FastAPI:
+https://www.youtube.com/watch?v=YxT0K5oEehk
