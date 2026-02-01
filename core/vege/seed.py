@@ -2,6 +2,8 @@ from faker import Faker
 import random
 from .models import *
 
+from django.db.models import Q,Sum # type: ignore
+
 fake = Faker()
 
 def seed_db(n=10)->None:
@@ -28,4 +30,39 @@ def seed_db(n=10)->None:
                 student_address =student_address
             )
     except Exception as e:
-        print("Err===>",e) 
+        print("Err===>",e)
+
+def create_subject_marks(n):
+    try:
+        student_obj = Student.objects.all()
+        for student in student_obj:
+            subjects = Subject.objects.all()
+            for subject in subjects:
+                SubjectMarks.objects.create(
+                    subject = subject,
+                    student = student,
+                    marks = random.randint(0,100)
+                )
+
+    except Exception as e:
+        print("Err===>",e)
+
+#Generate Ranks
+def generate_report_card():
+    print("CALLED")
+
+    ranks = (
+        Student.objects
+        .annotate(total_marks=Sum('studentmarks__marks'))
+        .order_by('-total_marks', '-student_age')
+    )
+
+    i = 1
+    for student in ranks:
+        ReportCard.objects.update_or_create(
+            student_rank=i,
+            defaults={
+                'student': student
+            }
+        )
+        i += 1

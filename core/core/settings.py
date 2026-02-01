@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Used for login or create from diferent username /email/phone for login
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 # Application definition
 
@@ -139,3 +142,15 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#For email backend configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'netstaffle@gmail.com'
+# app password generated from google account for security reason
+EMAIL_HOST_PASSWORD = 'qjba awcd kqwr bmom'
+
+
+# Note: In production, use environment variables to store sensitive information like EMAIL_HOST_PASSWORD

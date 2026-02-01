@@ -33,10 +33,17 @@ urlpatterns = [
     path('register/', register_page, name='register_page'),
     path('logout/', logout_page, name='logout_page'),
 
+    path('students/',get_students, name='get_students'),
+
+    #Here "name" is used for dinamic URL in application
+    # how to use in html : {% url 'see_marks' id %} : set url dynamic if change url it auto reflec here
+    path('see-marks/<student_id>',see_marks, name='see_marks'),
+
     #sample pages
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
+    path('send-email/', send_email, name='send_email'),
 ]
 
 # Serving Media Files in Development
